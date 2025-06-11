@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dicee</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!--<link
+      href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster"
+      rel="stylesheet"
+    />-->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Game Start</h1>
+
+      <div class="dice">
+        <p>Player 1</p>
+        <img class="img1" src="dice1.png"/>
+      </div>
+
+      <div class="dice">
+        <p>Player 2</p>
+        <img class="img2" src="dice1.png" />
+      </div>
+      <div>
+        <button value="start" onclick="winner()" class="btn">
+          Start the game
+        </button>
+      </div>
+    </div>
+
+    <footer>www 🎲 App Brewery 🎲 com</footer>
+    <script>
+      function winner() {
+        // Step 1: Generate a random number between 1 and 6
+        const randomNumber1 = Math.floor(Math.random() * 6) + 1;
+
+        // Step 2: Construct the image filename
+        const diceImage1 = "dice" + randomNumber1 + ".png";
+
+        // Step 3: Select the left <img> element and update its src attribute
+        document.querySelector(".img1").setAttribute("src", diceImage1);
+
+        const randomNumber2 = Math.floor(Math.random() * 6) + 1;
+
+        // Step 2: Construct the image filename
+        const diceImage2 = "dice" + randomNumber2 + ".png";
+
+        // Step 3: Select the right <img> element and update its src attribute
+        document.querySelector(".img2").setAttribute("src", diceImage2);
+
+        if (randomNumber1 > randomNumber2) {
+          document.querySelector("h1").innerHTML = "player1 is the winner<br> Score is "+randomNumber1;
+        } else if ((randomNumber1 == randomNumber2)) {
+          document.querySelector("h1").innerHTML = "Tie between players<br> Score is "+randomNumber1;
+        } else {
+          document.querySelector("h1").innerHTML = "player2 is the winner <br> Score is "+randomNumber2;
+        }
+
+      }
+    </script>
+  </body>
+</html>
